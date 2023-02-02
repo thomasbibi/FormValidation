@@ -1,0 +1,27 @@
+.cont{
+    height: 400px;
+    width: 40%;
+    background-color: gray;
+    text-align: center;
+    margin: 15% auto;
+    padding: 5%;
+}
+
+input{
+    width: 80%;
+    height: 2rem;
+    background-color: khaki;
+}
+
+input[type = "submit"]{
+    margin: 15px;
+}
+
+pre{
+    color: red;
+    font-size: 1.2rem;
+}
+
+div{
+    font-size: 1.2rem; 
+}
