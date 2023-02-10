@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import '../styles/formStyle.css'
 
 export default function FormComponent() {
+  const [isValid , setValid] = useState(true)
   const [data, setData] = useState({
     name: "",
     dob: "",
@@ -21,9 +23,11 @@ export default function FormComponent() {
     let { name, value } = e.target
     // Empty field validation
     if (value == "") {
+      setValid(false)
       setError({ ...error, [name]: "This field is required" })
     }
     else {
+      setValid(true)
       setError({ ...error, [name]: "" })
     }
     // Date Validation
@@ -33,10 +37,11 @@ export default function FormComponent() {
       let calDate = value.split("-")
       calDate = calDate[0]
       if (calDate > today || (today - calDate) < 18) {
-
+        setValid(false)
         setError({ ...error, [name]: "Age should be above 18" })
       }
       else {
+        setValid(true)
         setError({ ...error, [name]: "" })
       }
 
@@ -47,9 +52,11 @@ export default function FormComponent() {
     if (name == "email") {
       let expression = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
       if (!expression.test(value)) {
+        setValid(false)
         setError({ ...error, [name]: "Please provide a valid email" })
       }
       else {
+        setValid(true)
         setError({ ...error, [name]: "" })
       }
     }
@@ -58,12 +65,19 @@ export default function FormComponent() {
   }
 
   // handle submit
+  let navigate = useNavigate()
+
   async function handleSubmit(e) {
     e.preventDefault()
-    const res = await fetch("", {
+    const res = await fetch("http://localhost:5000/form-submit",{
       method: 'POST',
-      body: data
+      body: JSON.stringify(data),
+      headers : {
+        'content-Type' : 'application/json'
+      }
     })
+    console.log(data)
+    navigate("/forms")
   }
 
   return <>
@@ -112,7 +126,7 @@ export default function FormComponent() {
         {error.phone == "" ? null : <pre>{error.phone}</pre>}
 
         <div>
-          <input type="submit" value="Submit" id="submit" />
+          <input type="submit" value="Submit" id="submit" disabled={!isValid}/>
         </div>
       </form>
 
