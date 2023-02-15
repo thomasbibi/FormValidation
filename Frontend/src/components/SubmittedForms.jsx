@@ -14,7 +14,7 @@ export default function SubmittedForms(){
     }
     getData()
     },[])
-
+    console.log(forms)
     return(
      
         <div>
