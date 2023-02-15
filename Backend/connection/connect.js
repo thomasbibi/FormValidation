@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/form',
-()=>{console.log("connected")},
-(e)=>{console.log(e.message)})
+mongoose.connect(process.env.MONG_URI,{ useNewUrlParser: true, useUnifiedTopology: true })
+const connection = mongoose.connection;
+
+connection.once('open', () => {
+    console.log('MongoDB Atlas connection established successfully!');
+});
