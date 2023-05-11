@@ -12,8 +12,8 @@ function App() {
         <Routes>
         <Route path='/' element={<FormComponent/>}/>
         <Route path='/forms' element={<SubmittedForms/>}/>
-    </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
   </>
   )
 }

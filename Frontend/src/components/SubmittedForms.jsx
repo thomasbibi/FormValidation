@@ -14,12 +14,11 @@ export default function SubmittedForms(){
     }
     getData()
     },[])
-    console.log(forms)
     return(
      
         <div>
             <h1>Submitted forms:-</h1>
-            {forms.map((iter,index)=> 
+            {forms?.map((iter,index)=> 
              {
              return <Card data = {iter} key={index}/>
             }
