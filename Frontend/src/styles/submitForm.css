@@ -1,0 +1,12 @@
+#cont{
+    background-color: #eee;
+    text-align: center;
+    border: 2px solid #124ae1;
+    margin : 15px auto;
+    border-radius: 15px;
+    width: 40%;
+}
+
+h1{
+    text-align: center;
+}
