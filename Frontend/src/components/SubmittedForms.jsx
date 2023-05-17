@@ -8,7 +8,7 @@ export default function SubmittedForms(){
 
     useEffect(()=>{
         async function getData(){
-        let res = await fetch("http://localhost:5000/")
+        let res = await fetch("https://forms-web-service.onrender.com/")
         let data = await res.json()
         setForms(data.data)
     }
