@@ -69,7 +69,7 @@ export default function FormComponent() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    const res = await fetch("http://localhost:5000/form-submit",{
+    const res = await fetch("https://forms-web-service.onrender.com/form-submit",{
       method: 'POST',
       body: JSON.stringify(data),
       headers : {
